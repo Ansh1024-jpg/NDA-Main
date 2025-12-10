@@ -1,0 +1,155 @@
+/* Navbar Transparency Overrides */
+.chatgpt-header {
+    background: rgba(244, 244, 245, 0.65) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.04) !important;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+body.dark .chatgpt-header {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6) !important;
+}
+
+.selection-content {
+    display: flex;
+    align-items: flex-start;
+    /* Changed from center to flex-start */
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    padding: 80px 20px 20px;
+    /* Added top padding to push down slightly but still higher than center */
+    position: relative;
+    z-index: 1;
+}
+
+.selection-container {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+}
+
+.welcome-message {
+    margin-bottom: 60px;
+    color: #333;
+}
+
+body.dark .welcome-message {
+    color: #fff;
+}
+
+.welcome-message .instruction {
+    margin-top: 32px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #4b5563;
+}
+
+body.dark .welcome-message .instruction {
+    color: #e2e8f0;
+}
+
+.tiles-container {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.tile {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 32px;
+    width: 240px;
+    height: 200px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark .tile {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+/* Shine effect */
+/* Shine effect */
+.tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.6),
+            transparent);
+    transition: 0.5s;
+}
+
+body.dark .tile::before {
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent);
+}
+
+.tile:hover::before {
+    left: 100%;
+}
+
+.tile h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    z-index: 1;
+}
+
+body.dark .tile h3 {
+    color: #e2e8f0;
+}
+
+/* Active Tile Styling (Collaboration Service) */
+.tile.active {
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.tile.active:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.15) 0%, rgba(79, 70, 229, 0.05) 100%);
+    border-color: #6366f1;
+    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.15),
+        0 10px 10px -5px rgba(99, 102, 241, 0.1);
+}
+
+.tile.active:hover h3 {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* Disabled tiles styling */
+.tile.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+.tile.disabled:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.01);
+    border-color: rgba(255, 255, 255, 0.05);
+}
